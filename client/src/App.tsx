@@ -13,6 +13,9 @@ import Companies from "@/pages/Companies";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import NotFound from "@/pages/not-found";
+import Employee from "@/pages/Employee";
+import Employer from "@/pages/Employer";
+import Pricing from "@/pages/Pricing";
 
 function Router() {
   const [location, setLocation] = useLocation();
@@ -34,6 +37,9 @@ function Router() {
         <Route path="/features" component={Features} />
         <Route path="/students" component={Students} />
         <Route path="/companies" component={Companies} />
+        <Route path="/employee" component={Employee} />
+        <Route path="/employer" component={Employer} />
+        <Route path="/pricing" component={Pricing} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route component={NotFound} />
