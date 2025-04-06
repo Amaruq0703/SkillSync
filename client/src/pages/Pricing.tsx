@@ -121,7 +121,7 @@ const Pricing = () => {
             Choose the plan that best fits your needs, whether you're a student looking to accelerate your career or a company building a skilled workforce.
           </p>
           
-          <Tabs defaultValue="student" className="max-w-md mx-auto">
+          <Tabs defaultValue="student" className="max-w-md mx-auto mb-8">
             <TabsList className="grid grid-cols-2 mb-8">
               <TabsTrigger value="student">For Students</TabsTrigger>
               <TabsTrigger value="company">For Companies</TabsTrigger>
@@ -187,7 +187,7 @@ const Pricing = () => {
             </TabsContent>
             
             <TabsContent value="company" className="mt-8">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 px-4 md:px-12 lg:px-20">
                 {companyPlans.map((plan, index) => (
                   <Card key={index} className={`overflow-hidden relative ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
                     {plan.popular && (
