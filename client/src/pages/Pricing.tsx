@@ -187,7 +187,7 @@ const Pricing = () => {
             </TabsContent>
             
             <TabsContent value="company" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
                 {companyPlans.map((plan, index) => (
                   <Card key={index} className={`overflow-hidden relative ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
                     {plan.popular && (
