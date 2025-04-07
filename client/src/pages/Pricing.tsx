@@ -187,9 +187,9 @@ const Pricing = () => {
             </TabsContent>
             
             <TabsContent value="company" className="mt-8">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 px-4 md:px-12 lg:px-24 max-w-7xl mx-auto">
+              <div className="flex flex-col lg:flex-row gap-8 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
                 {companyPlans.map((plan, index) => (
-                  <Card key={index} className={`overflow-hidden relative min-h-full ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
+                  <Card key={index} className={`overflow-hidden relative flex-1 ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
                     {plan.popular && (
                       <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-medium rounded-bl-lg">
                         Most Popular
