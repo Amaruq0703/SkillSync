@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
+import { AuthProvider } from "@/hooks/use-auth";
+import { ProtectedRoute } from "@/lib/protected-route";
 
 // Page imports
 import Layout from "@/components/Layout";
@@ -10,8 +12,7 @@ import Home from "@/pages/Home";
 import Features from "@/pages/Features";
 import Students from "@/pages/Students";
 import Companies from "@/pages/Companies";
-import Login from "@/pages/Login";
-import Signup from "@/pages/Signup";
+import AuthPage from "@/pages/auth-page";
 import NotFound from "@/pages/not-found";
 import Employee from "@/pages/Employee";
 import Employer from "@/pages/Employer";
@@ -37,11 +38,14 @@ function Router() {
         <Route path="/features" component={Features} />
         <Route path="/students" component={Students} />
         <Route path="/companies" component={Companies} />
-        <Route path="/employee" component={Employee} />
-        <Route path="/employer" component={Employer} />
         <Route path="/pricing" component={Pricing} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route path="/auth" component={AuthPage} />
+        
+        {/* Protected Routes */}
+        <ProtectedRoute path="/employee" component={Employee} />
+        <ProtectedRoute path="/employer" component={Employer} />
+        
+        {/* 404 Page */}
         <Route component={NotFound} />
       </Switch>
     </Layout>
@@ -51,8 +55,10 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router />
-      <Toaster />
+      <AuthProvider>
+        <Router />
+        <Toaster />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
