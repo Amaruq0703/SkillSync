@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import Logo from "./Logo";
+import ImageLogo from "./ImageLogo";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -49,7 +49,7 @@ const Header = () => {
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <Logo className="h-8 w-auto" />
+            <ImageLogo className="h-10 w-auto" />
           </Link>
         </div>
         
