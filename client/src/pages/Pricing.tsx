@@ -187,7 +187,7 @@ const Pricing = () => {
             </TabsContent>
             
             <TabsContent value="company" className="mt-8">
-              <div className="flex flex-col lg:flex-row gap-8 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
+              <div className="flex flex-col lg:flex-row gap-6 mx-auto" style={{ width: '96%', maxWidth: '1400px' }}>
                 {companyPlans.map((plan, index) => (
                   <Card key={index} className={`overflow-hidden relative flex-1 ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
                     {plan.popular && (
