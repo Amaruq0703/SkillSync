@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-6">
-              <ImageLogo width={60} height={20} className="mr-2" />
+              <ImageLogo width={100} height={40} className="mr-2" />
             </div>
             <p className="text-white/70 mb-4">
               Empowering students and companies to create perfect skill matches.
