@@ -17,6 +17,8 @@ import NotFound from "@/pages/not-found";
 import Employee from "@/pages/Employee";
 import Employer from "@/pages/Employer";
 import Pricing from "@/pages/Pricing";
+import Profile from "@/pages/Profile";
+import StudentDashboard from "@/pages/StudentDashboard";
 
 function Router() {
   const [location, setLocation] = useLocation();
@@ -42,6 +44,8 @@ function Router() {
         <Route path="/auth" component={AuthPage} />
         
         {/* Protected Routes */}
+        <ProtectedRoute path="/profile" component={Profile} />
+        <ProtectedRoute path="/student-dashboard" component={StudentDashboard} />
         <ProtectedRoute path="/employee" component={Employee} />
         <ProtectedRoute path="/employer" component={Employer} />
         

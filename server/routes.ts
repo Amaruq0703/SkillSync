@@ -69,6 +69,69 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
+  // Profile routes
+  app.get("/api/profile", isAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userId = req.user!.id;
+      const userType = req.user!.userType;
+      
+      let profile;
+      
+      switch (userType) {
+        case 'student':
+          profile = await storage.getStudentProfile(userId);
+          break;
+        case 'employer':
+          profile = await storage.getCompanyProfile(userId);
+          break;
+        case 'employee':
+          profile = await storage.getEmployeeProfile(userId);
+          break;
+        default:
+          return res.status(400).json({ error: "Invalid user type" });
+      }
+      
+      if (!profile) {
+        return res.status(404).json({ error: "Profile not found" });
+      }
+      
+      res.json(profile);
+    } catch (err) {
+      next(err);
+    }
+  });
+  
+  app.post("/api/profile/update", isAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userId = req.user!.id;
+      const userType = req.user!.userType;
+      
+      let updatedProfile;
+      
+      switch (userType) {
+        case 'student':
+          updatedProfile = await storage.updateStudentProfile(userId, req.body);
+          break;
+        case 'employer':
+          updatedProfile = await storage.updateCompanyProfile(userId, req.body);
+          break;
+        case 'employee':
+          updatedProfile = await storage.updateEmployeeProfile(userId, req.body);
+          break;
+        default:
+          return res.status(400).json({ error: "Invalid user type" });
+      }
+      
+      if (!updatedProfile) {
+        return res.status(404).json({ error: "Profile not found" });
+      }
+      
+      res.json(updatedProfile);
+    } catch (err) {
+      next(err);
+    }
+  });
+
   // CV Analysis routes
   app.post("/api/cv-analysis", isAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
     try {

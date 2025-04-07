@@ -16,7 +16,7 @@ const Companies = () => {
     {
       name: "Starter",
       description: "For small businesses and startups",
-      price: "$199",
+      price: "£200",
       period: "/month",
       features: [
         "Up to 5 active job postings",
@@ -29,7 +29,7 @@ const Companies = () => {
     {
       name: "Professional",
       description: "For growing companies",
-      price: "$499",
+      price: "£500",
       period: "/month",
       features: [
         "Up to 15 active job postings",
@@ -303,7 +303,7 @@ const Companies = () => {
                         <span className="text-sm text-neutral-700">Frontend Development</span>
                         <span className="text-sm font-medium">Strong</span>
                       </div>
-                      <Progress value={92} className="h-2" indicatorClassName="bg-green-500" />
+                      <Progress value={92} className="h-2" />
                     </div>
                     
                     <div className="mb-4">
@@ -311,7 +311,7 @@ const Companies = () => {
                         <span className="text-sm text-neutral-700">Backend Development</span>
                         <span className="text-sm font-medium">Strong</span>
                       </div>
-                      <Progress value={88} className="h-2" indicatorClassName="bg-green-500" />
+                      <Progress value={88} className="h-2" />
                     </div>
                     
                     <div className="mb-4">
@@ -327,7 +327,7 @@ const Companies = () => {
                         <span className="text-sm text-neutral-700">Cloud Architecture</span>
                         <span className="text-sm font-medium">Needs Improvement</span>
                       </div>
-                      <Progress value={35} className="h-2" indicatorClassName="bg-red-500" />
+                      <Progress value={35} className="h-2" />
                     </div>
                     
                     <div>
@@ -335,7 +335,7 @@ const Companies = () => {
                         <span className="text-sm text-neutral-700">Machine Learning</span>
                         <span className="text-sm font-medium">Gap</span>
                       </div>
-                      <Progress value={12} className="h-2" indicatorClassName="bg-red-500" />
+                      <Progress value={12} className="h-2" />
                     </div>
                   </div>
                   
