@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import Logo from "./Logo";
+import ImageLogo from "./ImageLogo";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
@@ -12,8 +12,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-6">
-              <Logo className="w-8 h-8 mr-2" />
-              <span className="text-xl font-bold">Skillsync</span>
+              <ImageLogo width={100} height={60} className="w-auto h-auto mr-2" />
             </div>
             <p className="text-white/70 mb-4">
               Empowering students and companies to create perfect skill matches.
