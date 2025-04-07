@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import ImageLogo from "./ImageLogo";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut, User } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { user, logoutMutation } = useAuth();
   
   // Close mobile menu when route changes
   useEffect(() => {
@@ -49,7 +51,7 @@ const Header = () => {
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <ImageLogo width={120} height={55} />
+            <ImageLogo width={120} height={60} />
           </Link>
         </div>
         
@@ -68,12 +70,39 @@ const Header = () => {
         
         {/* Desktop Auth Buttons */}
         <div className="hidden md:flex items-center space-x-4">
-          <Link href="/login" className="text-primary font-medium">
-            Login
-          </Link>
-          <Button asChild>
-            <Link href="/signup">Sign Up</Link>
-          </Button>
+          {user ? (
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <User size={18} className="text-primary" />
+                <span className="font-medium">{user.username}</span>
+              </div>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => logoutMutation.mutate()}
+                disabled={logoutMutation.isPending}
+                className="flex items-center"
+              >
+                {logoutMutation.isPending ? (
+                  <span>Logging out...</span>
+                ) : (
+                  <>
+                    <LogOut size={16} className="mr-2" />
+                    <span>Logout</span>
+                  </>
+                )}
+              </Button>
+            </div>
+          ) : (
+            <>
+              <Link href="/auth" className="text-primary font-medium">
+                Login
+              </Link>
+              <Button asChild>
+                <Link href="/auth?tab=register">Sign Up</Link>
+              </Button>
+            </>
+          )}
         </div>
         
         {/* Mobile Menu Button */}
@@ -103,12 +132,38 @@ const Header = () => {
             </Link>
           ))}
           <div className="flex space-x-4 pt-2 border-t border-neutral-200">
-            <Link href="/login" className="text-primary font-medium py-2">
-              Login
-            </Link>
-            <Button asChild>
-              <Link href="/signup">Sign Up</Link>
-            </Button>
+            {user ? (
+              <div className="flex flex-col w-full space-y-3">
+                <div className="flex items-center space-x-2">
+                  <User size={18} className="text-primary" />
+                  <span className="font-medium">{user.username}</span>
+                </div>
+                <Button 
+                  variant="outline"
+                  onClick={() => logoutMutation.mutate()}
+                  disabled={logoutMutation.isPending}
+                  className="flex items-center justify-center w-full"
+                >
+                  {logoutMutation.isPending ? (
+                    <span>Logging out...</span>
+                  ) : (
+                    <>
+                      <LogOut size={16} className="mr-2" />
+                      <span>Logout</span>
+                    </>
+                  )}
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link href="/auth" className="text-primary font-medium py-2">
+                  Login
+                </Link>
+                <Button asChild>
+                  <Link href="/auth?tab=register">Sign Up</Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
