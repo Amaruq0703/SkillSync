@@ -187,15 +187,15 @@ const Pricing = () => {
             </TabsContent>
             
             <TabsContent value="company" className="mt-8">
-              <div className="flex flex-col lg:flex-row gap-6 mx-auto w-full px-4" style={{ maxWidth: '1800px' }}>
+              <div className="container mx-auto px-4 py-4 w-full" style={{ maxWidth: '100%' }}>
                 {companyPlans.map((plan, index) => (
-                  <Card key={index} className={`overflow-hidden relative flex-1 ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
+                  <Card key={index} className={`overflow-hidden relative w-full mb-6 ${plan.popular ? 'border-primary shadow-lg' : ''}`}>
                     {plan.popular && (
                       <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-medium rounded-bl-lg">
                         Most Popular
                       </div>
                     )}
-                    <CardHeader className={`${plan.popular ? 'bg-primary/10' : 'bg-neutral-50'} p-6`}>
+                    <CardHeader className={`${plan.popular ? 'bg-primary/10' : 'bg-neutral-50'} p-6 w-full`}>
                       <h2 className="text-2xl font-bold mb-1">{plan.name}</h2>
                       <p className="text-neutral-700">{plan.description}</p>
                     </CardHeader>
@@ -227,7 +227,7 @@ const Pricing = () => {
                         ))}
                       </ul>
                     </CardContent>
-                    <CardFooter className="bg-neutral-50 p-6">
+                    <CardFooter className="bg-neutral-50 p-6 w-full">
                       {plan.name === "Enterprise" ? (
                         <Button className="w-full" variant={plan.popular ? "default" : "outline"}>
                           Contact Sales
